@@ -15,19 +15,19 @@ public class  DNASequencer {
         result.append(part.get(0));
 
         for (int i = 1; i < part.size(); i++) {
-        String elementoDeLista = part.get(i);
-        StringBuilder sumOfChars = new StringBuilder();
+            String elementoDeLista = part.get(i);
+            StringBuilder sumOfChars = new StringBuilder();
+
             for (int j = 0; j < elementoDeLista.length(); j++){
                 char c = elementoDeLista.charAt(j);
                 String cStr = Character.toString(c);
                 sumOfChars.append(cStr);
 
                 if(!(result.toString()).contains(sumOfChars)){
-                result.append(cStr);
+                    result.append(cStr);
                 }
             }
         }
-        
         return result.toString();
     }
 }
