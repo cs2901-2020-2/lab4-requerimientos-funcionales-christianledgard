@@ -10,12 +10,21 @@ public class  DNASequencer {
         logger.info("Starting sequencer...");
     }
 
-    public String calculate(List<String> part){
-        StringBuilder result = new StringBuilder();
-        result.append(part.get(0));
+    public String calculate(List<String> parts) throws SubSequenceLenEx, SubSequenceSizeEx{
 
-        for (int i = 1; i < part.size(); i++) {
-            String elementoDeLista = part.get(i);
+        for (String item : parts) {
+            if(item.length() > 200){
+                throw new SubSequenceLenEx("The lenght of a subsequence is too large.");
+            }
+        }
+
+        if(parts.size()>160000) throw new SubSequenceSizeEx("Too many subsequences.");
+
+        StringBuilder result = new StringBuilder();
+        result.append(parts.get(0));
+
+        for (int i = 1; i < parts.size(); i++) {
+            String elementoDeLista = parts.get(i);
             StringBuilder sumOfChars = new StringBuilder();
 
             for (int j = 0; j < elementoDeLista.length(); j++){
