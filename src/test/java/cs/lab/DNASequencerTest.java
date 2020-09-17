@@ -2,12 +2,10 @@ package cs.lab;
 
 import org.testng.Assert;
 import org.testng.annotations.Test;
-import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
-import java.util.concurrent.TimeUnit;
 
 @Test
 public class DNASequencerTest {
@@ -28,7 +26,7 @@ public class DNASequencerTest {
             input.add("AHSVDBD");
         }
         DNASequencer sequencer = new DNASequencer();
-        String response = sequencer.calculate(input);
+        sequencer.calculate(input);
     }
 
     @Test(invocationCount = 50, threadPoolSize = 50)
@@ -37,7 +35,7 @@ public class DNASequencerTest {
         generic(0);
         long endTime = System.currentTimeMillis();
         long timeElapsed = endTime - startTime;
-        Assert.assertTrue(timeElapsed < 500);
+        Assert.assertTrue(timeElapsed < 100);
     }
 
     private void generic(int i) throws Exception {
